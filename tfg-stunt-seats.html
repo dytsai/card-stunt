@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>北一女30重聚-排字座位表</title>
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    td {
+      border: 1px solid black;
+      padding: 5px;
+      text-align: center;
+    }
+    input {
+      width: 100%;
+      box-sizing: border-box;
+    }
+    button {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <table id="grid"></table>
+  <input type="file" id="fileInput" accept=".txt" style="display: none;">
+  <button id="inputButton">讀取座位表</button>
+  <button id="outputButton">儲存座位表</button>
+
+  <script>
+    const rows = 7;
+    const columns = 25;
+
+    const grid = document.getElementById('grid');
+    const fileInput = document.getElementById('fileInput');
+    const inputButton = document.getElementById('inputButton');
+    const outputButton = document.getElementById('outputButton');
+
+    for (let i = 0; i < rows; i++) {
+      const row = document.createElement('tr');
+      for (let j = 0; j < columns; j++) {
+        const cell = document.createElement('td');
+        const input = document.createElement('input');
+        input.type = 'text';
+        cell.appendChild(input);
+        row.appendChild(cell);
+      }
+      grid.appendChild(row);
+    }
+
+    inputButton.addEventListener('click', () => {
+      fileInput.click();
+    });
+
+    fileInput.addEventListener('change', (event) => {
+      const file = event.target.files[0];
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const content = e.target.result;
+        const data = content.match(/\[(.*)\]/)[1].split(',').map(name => name.trim().replace(/"/g, ''));
+        const cells = grid.getElementsByTagName('input');
+        for (let i = 0; i < cells.length; i++) {
+          cells[i].value = data[i] || '';
+        }
+      };
+      reader.readAsText(file);
+    });
+
+    outputButton.addEventListener('click', () => {
+      const data = [];
+      const cells = grid.getElementsByTagName('input');
+      for (let i = 0; i < cells.length; i++) {
+        data.push(cells[i].value);
+      }
+
+      const content = `const stunts = ${JSON.stringify(data)};`;
+      const blob = new Blob([content], { type: 'text/plain' });
+      const url = URL.createObjectURL(blob);
+
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = 'tfg-stunt-people.txt';
+      link.click();
+
+      URL.revokeObjectURL(url);
+    });
+  </script>
+</body>
+</html>
