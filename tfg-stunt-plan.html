@@ -5,56 +5,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>北一女30重聚-排字計畫</title>
     <style>
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(20, 1fr);
-            grid-gap: 1px;
-            width: 100%;
-            height: 28vw; /* Adjust this value to change the height */
-        }
+		.grid {
+			display: grid;
+			grid-template-columns: repeat(20, 1fr);
+			grid-gap: 1px;
+			width: 100%;
+			height: 28vw;
+		}
 
-        .cell {
-            background-color: #000; /* Initial color */
-            position: relative;
-        }
+		.cell {
+			background-color: #000;
+			position: relative;
+		}
 
-        .tooltip {
-            visibility: hidden;
-            background-color: rgba(0, 0, 0, 0.8);
-            color: #fff;
-            text-align: center;
-            border-radius: 6px;
-            padding: 5px;
-            position: absolute;
-            z-index: 1;
-            bottom: 120%;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 14px;
-            white-space: nowrap;
-        }
+		@keyframes flash {
+			0% {
+				border: 2px solid gold;
+			}
+			50% {
+				border: 2px solid transparent;
+			}
+			100% {
+				border: 2px solid gold;
+			}
+		}
 
-        .cell:hover .tooltip {
-            visibility: visible;
-        }
+		.content {
+			display: none;
+			margin-top: 10px;
+			font-size: 16px;
+			font-weight: bold;
+			white-space: pre-line;
+		}
 
-        .content {
-            display: none;
-            margin-top: 10px;
-            font-size: 16px;
-            font-weight: bold;
-            white-space: pre-line; /* Added to preserve line breaks */
-        }
-
-        .cell:hover ~ .content {
-            display: block;
-        }
-
-        .numbers {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 10px;
-        }
+		.numbers {
+			display: flex;
+			justify-content: center;
+			margin-bottom: 10px;
+		}
 
 		.numbers button {
 			margin: 0 5px;
@@ -71,7 +59,11 @@
 			background-color: #198754;
 			color: #fff;
 		}
-    </style>
+
+		.selected {
+			animation: flash 0.5s infinite;
+		}
+	</style>
 </head>
 <body>
 	<h1 style="color:#198754">北一女30重聚 - 排字計畫</h1>
@@ -96,15 +88,15 @@
 		function getColorName(colorCode) {
 			switch (colorCode) {
 				case '#FFFFFF':
-					return '白色';
+					return '白　色';
 				case '#008000':
-					return '綠色';
+					return '綠　色';
 				case '#000000':
-					return '黑色';
+					return '黑　色';
 				case '#0000CD':
 					return '深藍色';
 				case '#B22222':
-					return '紅色';
+					return '紅　色';
 				case '#FFC0CB':
 					return '粉紅色';
 				case '#84C1FF':
@@ -130,6 +122,8 @@
 			["#0000CD","#0000CD","#000000","#000000","#000000","#000000","#000000","#000000","#0000CD","#0000CD","#0000CD","#FFFFFF","#FFFFFF","#FFFFFF","#FFFFFF","#FFFFFF","#FFFFFF","#FFFFFF","#0000CD","#0000CD","#0000CD","#0000CD","#000000","#FFC0CB","#FFC0CB","#FFC0CB","#000000","#000000","#000000","#0000CD","#0000CD","#FFFFFF","#0000CD","#0000CD","#FFFFFF","#0000CD","#0000CD","#FFFFFF","#0000CD","#0000CD","#0000CD","#0000CD","#FFC0CB","#000000","#FFC0CB","#000000","#FFC0CB","#000000","#000000","#0000CD","#0000CD","#FFFFFF","#0000CD","#0000CD","#FFFFFF","#0000CD","#0000CD","#FFFFFF","#0000CD","#0000CD","#0000CD","#0000CD","#B22222","#FFC0CB","#FFC0CB","#FFC0CB","#B22222","#000000","#000000","#0000CD","#0000CD","#FFFFFF","#FFFFFF","#FFFFFF","#FFFFFF","#FFFFFF","#FFFFFF","#FFFFFF","#0000CD","#0000CD","#0000CD","#0000CD","#000000","#FFC0CB","#000000","#FFC0CB","#000000","#000000","#000000","#0000CD","#0000CD","#FFFFFF","#0000CD","#0000CD","#FFFFFF","#0000CD","#0000CD","#FFFFFF","#0000CD","#0000CD","#0000CD","#0000CD","#000000","#FFC0CB","#FFC0CB","#FFC0CB","#000000","#000000","#000000","#0000CD","#0000CD","#FFFFFF","#0000CD","#0000CD","#FFFFFF","#0000CD","#0000CD","#FFFFFF","#0000CD","#0000CD","#0000CD","#0000CD","#000000","#000000","#FFC0CB","#000000","#000000","#000000","#000000","#000000","#0000CD","#FFFFFF","#FFFFFF","#FFFFFF","#FFFFFF","#FFFFFF","#FFFFFF","#FFFFFF","#0000CD","#0000CD"]
 		];
 			
+		let selectedIndex = -1; // Variable to store the index of the selected cell
+
 		function createGrid(index) {
 			grid.innerHTML = ''; // Clear the grid
 
@@ -138,11 +132,11 @@
 				cell.classList.add('cell');
 				cell.style.backgroundColor = colorArrays[index - 1][i];
 
-				const tooltip = document.createElement('span');
-				tooltip.classList.add('tooltip');
-				tooltip.textContent = `(${row + 1}, ${col + 1})`;
+				// Check if the current cell was previously selected
+				if (i === selectedIndex) {
+					cell.classList.add('selected');
+				}
 
-				cell.appendChild(tooltip);
 				grid.appendChild(cell);
 
 				col++;
@@ -162,10 +156,19 @@
         // Add event listener to grid
 		grid.addEventListener('click', function(event) {
 			if (event.target.classList.contains('cell')) {
-				const index = Array.from(grid.children).indexOf(event.target);
-				const row = Math.floor(index / 20) + 1;
-				const col = (index % 20) + 1;
-				const colorNames = colorArrays.map(colors => getColorName(colors[index]));
+				// Remove the "selected" class from all cells
+				const cells = grid.querySelectorAll('.cell');
+				cells.forEach(cell => cell.classList.remove('selected'));
+
+				// Add the "selected" class to the clicked cell
+				event.target.classList.add('selected');
+
+				// Store the index of the selected cell
+				selectedIndex = Array.from(grid.children).indexOf(event.target);
+
+				const row = Math.floor(selectedIndex / 20) + 1;
+				const col = (selectedIndex % 20) + 1;
+				const colorNames = colorArrays.map(colors => getColorName(colors[selectedIndex]));
 
 				contentDiv.innerHTML = `座位: (${row}, ${col}) 第${getOrdinalNumber(row)}行第${getOrdinalNumber(col)}列<br><br>` +
 					colorNames.map((name, i) => {
@@ -173,7 +176,7 @@
 						colorBlock.style.display = 'inline-block';
 						colorBlock.style.width = '20px';
 						colorBlock.style.height = '20px';
-						colorBlock.style.backgroundColor = colorArrays[i][index];
+						colorBlock.style.backgroundColor = colorArrays[i][selectedIndex];
 						colorBlock.style.border = '1px solid black';
 						colorBlock.style.marginRight = '5px';
 
