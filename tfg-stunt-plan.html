@@ -63,6 +63,17 @@
 		.selected {
 			animation: flash 0.5s infinite;
 		}
+		
+		.seat {
+			margin: 0 5px;
+			padding: 5px 10px;
+			font-size: 26px;
+			cursor: pointer;
+			border: 2px solid orange;
+			background-color: #fff;
+			color: orange;
+			font-weight: bold;
+		}
 	</style>
 </head>
 <body>
@@ -107,6 +118,27 @@
 			}
 		}
 
+		function getRowName(rowNum) {
+			switch (rowNum) {
+				case 1:
+					return 'G';
+				case 2:
+					return 'F';
+				case 3:
+					return 'E';
+				case 4:
+					return 'D';
+				case 5:
+					return 'C';
+				case 6:
+					return 'B';
+				case 7:
+					return 'A';
+				default:
+					return 'Unknown';
+			}
+		}
+
 		const totalRow = 7;
 		const totalColumn = 20;
 
@@ -117,9 +149,6 @@
 		let selectedIndex = -1; // Variable to store the index of the selected cell
 
 		function createGrid(index) {
-			let row = 0;
-			let col = 0;
-
 			grid.innerHTML = '';
 
 			for (let i = 0; i < totalRow * totalColumn; i++) {
@@ -132,16 +161,7 @@
 				}
 
 				grid.appendChild(cell);
-
-				col++;
-				if (col === totalColumn) {
-					col = 0;
-					row++;
-				}
 			}
-
-			row = 0;
-			col = 0;
 		}
 
         // Create the initial grid
@@ -164,7 +184,7 @@
 				const col = (selectedIndex % totalColumn) + 1;
 				const colorNames = colorArrays.map(colors => getColorName(colors[selectedIndex]));
 
-				contentDiv.innerHTML = `座位: (${row}, ${col}) 第${row}行第${col}列<br><br>` +
+				contentDiv.innerHTML = `<br/><span class="seat">${getRowName(row)} ${col}</span><br/><br/>` +
 					colorNames.map((name, i) => {
 						const colorBlock = document.createElement('div');
 						colorBlock.style.display = 'inline-block';
