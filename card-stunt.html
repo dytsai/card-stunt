@@ -38,6 +38,8 @@
         .cell {
             background-color: #000;
             position: relative;
+			box-sizing: border-box;
+			padding: 2px;
         }
 
         .content {
@@ -50,18 +52,20 @@
 
         @keyframes flash {
             0% {
-                border: 2px solid gold;
+                outline-color: gold;
             }
             50% {
-                border: 2px solid transparent;
+                outline-color: rgba(255, 215, 0, 0.5);
             }
             100% {
-                border: 2px solid gold;
+                outline-color: gold;
             }
         }
 
         .selected {
             animation: flash 0.5s infinite;
+			outline: 4px solid gold;
+			outline-offset: -4px;
         }
         
         .seat {
