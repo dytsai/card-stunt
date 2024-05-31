@@ -38,8 +38,8 @@
         .cell {
             background-color: #000;
             position: relative;
-			box-sizing: border-box;
-			padding: 2px;
+            box-sizing: border-box;
+            padding: 2px;
         }
 
         .content {
@@ -64,8 +64,8 @@
 
         .selected {
             animation: flash 0.5s infinite;
-			outline: 4px solid gold;
-			outline-offset: -4px;
+            outline: 4px solid gold;
+            outline-offset: -4px;
         }
         
         .seat {
@@ -79,6 +79,7 @@
             font-weight: bold;
         }
     </style>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
 </head>
 <body>
     <h1 style="color:#198754">北一女30重聚 - 排字計畫</h1>
@@ -88,6 +89,7 @@
     </div>
     <div class="content">
     </div>
+    <button id="showAllContent">Show All Content</button>
 
     <script>
         const colorArrays = [
@@ -230,6 +232,34 @@
                 button.classList.add('active');
             }
         }
+        const showAllContentButton = document.getElementById('showAllContent');
+
+showAllContentButton.addEventListener('click', function() {
+    const doc = new jsPDF();
+    let yPos = 20;
+
+    for (let i = 0; i < totalRow * totalColumn; i++) {
+        const row = Math.floor(i / totalColumn) + 1;
+        const col = (i % totalColumn) + 1;
+        const colorNames = colorArrays.map(colors => getColorName(colors[i]));
+
+        const seatInfo = `Seat: ${getRowName(row)} ${col}\n\n` +
+            colorNames.map((name, index) => {
+                const colorBlock = `${String.fromCharCode(9632)} `;
+                return `${index + 1}. ${colorBlock} ${name}`;
+            }).join('\n');
+
+        doc.text(seatInfo, 10, yPos);
+        yPos += 10 + colorNames.length * 10;
+
+        if (yPos > doc.internal.pageSize.height - 20) {
+            doc.addPage();
+            yPos = 20;
+        }
+    }
+
+    doc.save('seat_info.pdf');
+});
     </script>
 </body>
 </html>
