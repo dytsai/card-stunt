@@ -14,8 +14,8 @@
 
         .numbers button {
             margin: 5px;
-            padding: 5px 10px;
-            font-size: 16px;
+            padding: 3px 6px;
+            font-size: 12px;
             cursor: pointer;
             border: 2px solid #198754;
             background-color: #fff;
@@ -46,7 +46,7 @@
         .content {
             display: none;
             margin-top: 10px;
-            font-size: 16px;
+            font-size: 12px;
             font-weight: bold;
             white-space: pre-line;
         }
@@ -237,18 +237,18 @@
                     const columnHTML = columnColors.map((name, index) => {
                         const colorBlock = document.createElement('div');
                         colorBlock.style.display = 'inline-block';
-                        colorBlock.style.width = '20px';
-                        colorBlock.style.height = '20px';
+                        colorBlock.style.width = '15px';
+                        colorBlock.style.height = '15px';
                         colorBlock.style.backgroundColor = colorArrays[startIndex + index][selectedIndex];
                         colorBlock.style.border = '1px solid black';
-                        colorBlock.style.marginRight = '5px';
+                        colorBlock.style.marginRight = '3px';
 
                         const number = startIndex + index + 1;
                         const formattedNumber = number < 10 ? `0${number}` : number;
 
                         const numberSpan = document.createElement('span');
                         numberSpan.textContent = `${formattedNumber}. `;
-                        numberSpan.style.marginRight = '5px';
+                        numberSpan.style.marginRight = '3px';
 
                         return `${numberSpan.outerHTML}${colorBlock.outerHTML} ${name}`;
                     }).join('<br>');
