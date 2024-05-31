@@ -5,79 +5,79 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>北一女30重聚-排字計畫</title>
     <style>
-		.numbers {
-			display: flex;
-			justify-content: center;
-			margin-bottom: 10px;
-		}
+        .numbers {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
 
-		.numbers button {
-			margin: 0 5px;
-			padding: 5px 10px;
-			font-size: 16px;
-			cursor: pointer;
-			border: 2px solid #198754;
-			background-color: #fff;
-			color: #198754;
-			font-weight: bold;
-		}
+        .numbers button {
+            margin: 0 5px;
+            padding: 5px 10px;
+            font-size: 16px;
+            cursor: pointer;
+            border: 2px solid #198754;
+            background-color: #fff;
+            color: #198754;
+            font-weight: bold;
+        }
 
-		.numbers button.active {
-			background-color: #198754;
-			color: #fff;
-		}
+        .numbers button.active {
+            background-color: #198754;
+            color: #fff;
+        }
 
-		.grid {
-			display: grid;
-			grid-template-columns: repeat(20, 1fr);
-			grid-gap: 1px;
-			width: 100%;
-			height: 28vw;
-		}
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(20, 1fr);
+            grid-gap: 1px;
+            width: 100%;
+            height: 28vw;
+        }
 
-		.cell {
-			background-color: #000;
-			position: relative;
-		}
+        .cell {
+            background-color: #000;
+            position: relative;
+        }
 
-		.content {
-			display: none;
-			margin-top: 10px;
-			font-size: 16px;
-			font-weight: bold;
-			white-space: pre-line;
-		}
+        .content {
+            display: none;
+            margin-top: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            white-space: pre-line;
+        }
 
-		@keyframes flash {
-			0% {
-				border: 2px solid gold;
-			}
-			50% {
-				border: 2px solid transparent;
-			}
-			100% {
-				border: 2px solid gold;
-			}
-		}
+        @keyframes flash {
+            0% {
+                border: 2px solid gold;
+            }
+            50% {
+                border: 2px solid transparent;
+            }
+            100% {
+                border: 2px solid gold;
+            }
+        }
 
-		.selected {
-			animation: flash 0.5s infinite;
-		}
-		
-		.seat {
-			margin: 0 5px;
-			padding: 5px 10px;
-			font-size: 26px;
-			cursor: pointer;
-			border: 2px solid orange;
-			background-color: #fff;
-			color: orange;
-			font-weight: bold;
-		}
-	</style>
+        .selected {
+            animation: flash 0.5s infinite;
+        }
+        
+        .seat {
+            margin: 0 5px;
+            padding: 5px 10px;
+            font-size: 26px;
+            cursor: pointer;
+            border: 2px solid orange;
+            background-color: #fff;
+            color: orange;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
-	<h1 style="color:#198754">北一女30重聚 - 排字計畫</h1>
+    <h1 style="color:#198754">北一女30重聚 - 排字計畫</h1>
     <div class="numbers">
     </div>
     <div class="grid">
@@ -86,146 +86,146 @@
     </div>
 
     <script>
-		const colorArrays = [
-			["#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#FFFFFF","#FFFFFF","#FFFFFF","#FFFFFF","#FFFFFF","#008000","#FFFFFF","#FFFFFF","#FFFFFF","#FFFFFF","#008000","#FFFFFF","#FFFFFF","#FFFFFF","#FFFFFF","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#FFFFFF","#008000","#008000","#008000","#FFFFFF","#008000","#008000","#008000","#008000","#FFFFFF","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#FFFFFF","#008000","#008000","#008000","#FFFFFF","#FFFFFF","#FFFFFF","#FFFFFF","#008000","#FFFFFF","#008000","#FFFFFF","#FFFFFF","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#FFFFFF","#008000","#008000","#008000","#FFFFFF","#008000","#008000","#008000","#008000","#FFFFFF","#008000","#008000","#FFFFFF","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#FFFFFF","#008000","#008000","#008000","#FFFFFF","#008000","#008000","#008000","#008000","#FFFFFF","#FFFFFF","#FFFFFF","#FFFFFF","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000"],
-			["#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#B22222","#008000","#008000","#008000","#B22222","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#B22222","#B22222","#B22222","#008000","#B22222","#B22222","#B22222","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#B22222","#B22222","#B22222","#B22222","#B22222","#B22222","#B22222","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#B22222","#B22222","#B22222","#B22222","#B22222","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#B22222","#B22222","#B22222","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#B22222","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000"],
-			["#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#FFC0CB","#84C1FF","#84C1FF","#B22222","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#FFFFFF","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#84C1FF","#FFC0CB","#B22222","#84C1FF","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#FFFFFF","#0000CD","#FFFFFF","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#84C1FF","#B22222","#FFC0CB","#84C1FF","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#FFFFFF","#0000CD","#0000CD","#0000CD","#FFFFFF","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#B22222","#84C1FF","#84C1FF","#FFC0CB","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#FFFFFF","#0000CD","#0000CD","#0000CD","#FFFFFF","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#FFFFFF","#0000CD","#FFFFFF","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#FFFFFF","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD"],
-			["#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#008000","#008000","#008000","#008000","#008000","#008000","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#008000","#008000","#008000","#008000","#008000","#008000","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#008000","#008000","#008000"],
-			["#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#FFC0CB","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#FFC0CB","#008000","#008000","#008000","#008000","#008000","#008000","#FFC0CB","#B22222","#FFC0CB","#008000","#008000","#FFC0CB","#008000","#008000","#008000","#FFC0CB","#008000","#008000","#FFC0CB","#B22222","#FFC0CB","#008000","#008000","#FFC0CB","#008000","#008000","#008000","#FFC0CB","#008000","#008000","#FFC0CB","#B22222","#FFC0CB","#008000","#FFC0CB","#B22222","#FFC0CB","#008000","#008000","#FFC0CB","#008000","#008000","#FFC0CB","#B22222","#FFC0CB","#008000","#008000","#008000","#008000","#008000","#008000","#FFC0CB","#008000","#008000","#008000","#FFC0CB","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#FFC0CB","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000"],
-			["#000000","#000000","#000000","#000000","#000000","#000000","#000000","#000000","#000000","#000000","#000000","#000000","#000000","#000000","#000000","#000000","#000000","#000000","#000000","#000000","#000000","#FFFFFF","#000000","#FFFFFF","#000000","#FFFFFF","#FFFFFF","#000000","#FFFFFF","#000000","#000000","#FFFFFF","#000000","#000000","#FFFFFF","#FFFFFF","#FFFFFF","#000000","#000000","#000000","#000000","#FFFFFF","#000000","#FFFFFF","#000000","#FFFFFF","#000000","#000000","#FFFFFF","#000000","#000000","#FFFFFF","#000000","#000000","#FFFFFF","#000000","#FFFFFF","#000000","#000000","#000000","#000000","#FFFFFF","#FFFFFF","#FFFFFF","#000000","#FFFFFF","#FFFFFF","#000000","#FFFFFF","#000000","#000000","#FFFFFF","#000000","#000000","#FFFFFF","#000000","#FFFFFF","#000000","#000000","#000000","#000000","#FFFFFF","#000000","#FFFFFF","#000000","#FFFFFF","#000000","#000000","#FFFFFF","#000000","#000000","#FFFFFF","#000000","#000000","#FFFFFF","#000000","#FFFFFF","#000000","#000000","#000000","#000000","#FFFFFF","#000000","#FFFFFF","#000000","#FFFFFF","#FFFFFF","#000000","#FFFFFF","#FFFFFF","#000000","#FFFFFF","#FFFFFF","#000000","#FFFFFF","#FFFFFF","#FFFFFF","#000000","#000000","#000000","#000000","#000000","#000000","#000000","#000000","#000000","#000000","#000000","#000000","#000000","#000000","#000000","#000000","#000000","#000000","#000000","#000000","#000000","#000000","#000000"],
-			["#0000CD","#0000CD","#FFFFFF","#FFFFFF","#FFFFFF","#FFFFFF","#FFFFFF","#FFFFFF","#FFFFFF","#0000CD","#0000CD","#000000","#000000","#000000","#000000","#000000","#000000","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#FFFFFF","#0000CD","#0000CD","#FFFFFF","#0000CD","#0000CD","#FFFFFF","#0000CD","#0000CD","#000000","#FFC0CB","#FFC0CB","#FFC0CB","#000000","#000000","#000000","#0000CD","#0000CD","#0000CD","#0000CD","#FFFFFF","#0000CD","#0000CD","#FFFFFF","#0000CD","#0000CD","#FFFFFF","#0000CD","#0000CD","#FFC0CB","#000000","#FFC0CB","#000000","#FFC0CB","#000000","#000000","#0000CD","#0000CD","#0000CD","#0000CD","#FFFFFF","#FFFFFF","#FFFFFF","#FFFFFF","#FFFFFF","#FFFFFF","#FFFFFF","#0000CD","#0000CD","#FFC0CB","#FFC0CB","#FFC0CB","#FFC0CB","#B22222","#FFC0CB","#000000","#0000CD","#0000CD","#0000CD","#0000CD","#FFFFFF","#0000CD","#0000CD","#FFFFFF","#0000CD","#0000CD","#FFFFFF","#0000CD","#0000CD","#000000","#FFC0CB","#000000","#FFC0CB","#FFC0CB","#000000","#000000","#0000CD","#0000CD","#0000CD","#0000CD","#FFFFFF","#0000CD","#0000CD","#FFFFFF","#0000CD","#0000CD","#FFFFFF","#0000CD","#0000CD","#000000","#FFC0CB","#FFC0CB","#FFC0CB","#FFC0CB","#000000","#000000","#0000CD","#0000CD","#0000CD","#0000CD","#FFFFFF","#FFFFFF","#FFFFFF","#FFFFFF","#FFFFFF","#FFFFFF","#FFFFFF","#0000CD","#0000CD","#000000","#000000","#FFC0CB","#FFC0CB","#000000","#000000","#000000","#000000","#0000CD"],
-			["#0000CD","#0000CD","#000000","#000000","#000000","#000000","#000000","#000000","#0000CD","#0000CD","#0000CD","#FFFFFF","#FFFFFF","#FFFFFF","#FFFFFF","#FFFFFF","#FFFFFF","#FFFFFF","#0000CD","#0000CD","#0000CD","#0000CD","#000000","#FFC0CB","#FFC0CB","#FFC0CB","#000000","#000000","#000000","#0000CD","#0000CD","#FFFFFF","#0000CD","#0000CD","#FFFFFF","#0000CD","#0000CD","#FFFFFF","#0000CD","#0000CD","#0000CD","#0000CD","#FFC0CB","#000000","#FFC0CB","#000000","#FFC0CB","#000000","#000000","#0000CD","#0000CD","#FFFFFF","#0000CD","#0000CD","#FFFFFF","#0000CD","#0000CD","#FFFFFF","#0000CD","#0000CD","#0000CD","#0000CD","#B22222","#FFC0CB","#FFC0CB","#FFC0CB","#B22222","#000000","#000000","#0000CD","#0000CD","#FFFFFF","#FFFFFF","#FFFFFF","#FFFFFF","#FFFFFF","#FFFFFF","#FFFFFF","#0000CD","#0000CD","#0000CD","#0000CD","#000000","#FFC0CB","#000000","#FFC0CB","#000000","#000000","#000000","#0000CD","#0000CD","#FFFFFF","#0000CD","#0000CD","#FFFFFF","#0000CD","#0000CD","#FFFFFF","#0000CD","#0000CD","#0000CD","#0000CD","#000000","#FFC0CB","#FFC0CB","#FFC0CB","#000000","#000000","#000000","#0000CD","#0000CD","#FFFFFF","#0000CD","#0000CD","#FFFFFF","#0000CD","#0000CD","#FFFFFF","#0000CD","#0000CD","#0000CD","#0000CD","#000000","#000000","#FFC0CB","#000000","#000000","#000000","#000000","#000000","#0000CD","#FFFFFF","#FFFFFF","#FFFFFF","#FFFFFF","#FFFFFF","#FFFFFF","#FFFFFF","#0000CD","#0000CD"]
-		];
+        const colorArrays = [
+            ["#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#FFFFFF","#FFFFFF","#FFFFFF","#FFFFFF","#FFFFFF","#008000","#FFFFFF","#FFFFFF","#FFFFFF","#FFFFFF","#008000","#FFFFFF","#FFFFFF","#FFFFFF","#FFFFFF","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#FFFFFF","#008000","#008000","#008000","#FFFFFF","#008000","#008000","#008000","#008000","#FFFFFF","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#FFFFFF","#008000","#008000","#008000","#FFFFFF","#FFFFFF","#FFFFFF","#FFFFFF","#008000","#FFFFFF","#008000","#FFFFFF","#FFFFFF","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#FFFFFF","#008000","#008000","#008000","#FFFFFF","#008000","#008000","#008000","#008000","#FFFFFF","#008000","#008000","#FFFFFF","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#FFFFFF","#008000","#008000","#008000","#FFFFFF","#008000","#008000","#008000","#008000","#FFFFFF","#FFFFFF","#FFFFFF","#FFFFFF","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000"],
+            ["#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#B22222","#008000","#008000","#008000","#B22222","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#B22222","#B22222","#B22222","#008000","#B22222","#B22222","#B22222","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#B22222","#B22222","#B22222","#B22222","#B22222","#B22222","#B22222","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#B22222","#B22222","#B22222","#B22222","#B22222","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#B22222","#B22222","#B22222","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#B22222","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000"],
+            ["#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#FFC0CB","#84C1FF","#84C1FF","#B22222","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#FFFFFF","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#84C1FF","#FFC0CB","#B22222","#84C1FF","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#FFFFFF","#0000CD","#FFFFFF","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#84C1FF","#B22222","#FFC0CB","#84C1FF","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#FFFFFF","#0000CD","#0000CD","#0000CD","#FFFFFF","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#B22222","#84C1FF","#84C1FF","#FFC0CB","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#FFFFFF","#0000CD","#0000CD","#0000CD","#FFFFFF","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#FFFFFF","#0000CD","#FFFFFF","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#FFFFFF","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD"],
+            ["#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#008000","#008000","#008000","#008000","#008000","#008000","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#008000","#008000","#008000","#008000","#008000","#008000","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#008000","#008000","#008000"],
+            ["#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#FFC0CB","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#FFC0CB","#008000","#008000","#008000","#008000","#008000","#008000","#FFC0CB","#B22222","#FFC0CB","#008000","#008000","#FFC0CB","#008000","#008000","#008000","#FFC0CB","#008000","#008000","#FFC0CB","#B22222","#FFC0CB","#008000","#008000","#FFC0CB","#008000","#008000","#008000","#FFC0CB","#008000","#008000","#FFC0CB","#B22222","#FFC0CB","#008000","#FFC0CB","#B22222","#FFC0CB","#008000","#008000","#FFC0CB","#008000","#008000","#FFC0CB","#B22222","#FFC0CB","#008000","#008000","#008000","#008000","#008000","#008000","#FFC0CB","#008000","#008000","#008000","#FFC0CB","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#FFC0CB","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000","#008000"],
+            ["#000000","#000000","#000000","#000000","#000000","#000000","#000000","#000000","#000000","#000000","#000000","#000000","#000000","#000000","#000000","#000000","#000000","#000000","#000000","#000000","#000000","#FFFFFF","#000000","#FFFFFF","#000000","#FFFFFF","#FFFFFF","#000000","#FFFFFF","#000000","#000000","#FFFFFF","#000000","#000000","#FFFFFF","#FFFFFF","#FFFFFF","#000000","#000000","#000000","#000000","#FFFFFF","#000000","#FFFFFF","#000000","#FFFFFF","#000000","#000000","#FFFFFF","#000000","#000000","#FFFFFF","#000000","#000000","#FFFFFF","#000000","#FFFFFF","#000000","#000000","#000000","#000000","#FFFFFF","#FFFFFF","#FFFFFF","#000000","#FFFFFF","#FFFFFF","#000000","#FFFFFF","#000000","#000000","#FFFFFF","#000000","#000000","#FFFFFF","#000000","#FFFFFF","#000000","#000000","#000000","#000000","#FFFFFF","#000000","#FFFFFF","#000000","#FFFFFF","#000000","#000000","#FFFFFF","#000000","#000000","#FFFFFF","#000000","#000000","#FFFFFF","#000000","#FFFFFF","#000000","#000000","#000000","#000000","#FFFFFF","#000000","#FFFFFF","#000000","#FFFFFF","#FFFFFF","#000000","#FFFFFF","#FFFFFF","#000000","#FFFFFF","#FFFFFF","#000000","#FFFFFF","#FFFFFF","#FFFFFF","#000000","#000000","#000000","#000000","#000000","#000000","#000000","#000000","#000000","#000000","#000000","#000000","#000000","#000000","#000000","#000000","#000000","#000000","#000000","#000000","#000000","#000000","#000000"],
+            ["#0000CD","#0000CD","#FFFFFF","#FFFFFF","#FFFFFF","#FFFFFF","#FFFFFF","#FFFFFF","#FFFFFF","#0000CD","#0000CD","#000000","#000000","#000000","#000000","#000000","#000000","#0000CD","#0000CD","#0000CD","#0000CD","#0000CD","#FFFFFF","#0000CD","#0000CD","#FFFFFF","#0000CD","#0000CD","#FFFFFF","#0000CD","#0000CD","#000000","#FFC0CB","#FFC0CB","#FFC0CB","#000000","#000000","#000000","#0000CD","#0000CD","#0000CD","#0000CD","#FFFFFF","#0000CD","#0000CD","#FFFFFF","#0000CD","#0000CD","#FFFFFF","#0000CD","#0000CD","#FFC0CB","#000000","#FFC0CB","#000000","#FFC0CB","#000000","#000000","#0000CD","#0000CD","#0000CD","#0000CD","#FFFFFF","#FFFFFF","#FFFFFF","#FFFFFF","#FFFFFF","#FFFFFF","#FFFFFF","#0000CD","#0000CD","#FFC0CB","#FFC0CB","#FFC0CB","#FFC0CB","#B22222","#FFC0CB","#000000","#0000CD","#0000CD","#0000CD","#0000CD","#FFFFFF","#0000CD","#0000CD","#FFFFFF","#0000CD","#0000CD","#FFFFFF","#0000CD","#0000CD","#000000","#FFC0CB","#000000","#FFC0CB","#FFC0CB","#000000","#000000","#0000CD","#0000CD","#0000CD","#0000CD","#FFFFFF","#0000CD","#0000CD","#FFFFFF","#0000CD","#0000CD","#FFFFFF","#0000CD","#0000CD","#000000","#FFC0CB","#FFC0CB","#FFC0CB","#FFC0CB","#000000","#000000","#0000CD","#0000CD","#0000CD","#0000CD","#FFFFFF","#FFFFFF","#FFFFFF","#FFFFFF","#FFFFFF","#FFFFFF","#FFFFFF","#0000CD","#0000CD","#000000","#000000","#FFC0CB","#FFC0CB","#000000","#000000","#000000","#000000","#0000CD"],
+            ["#0000CD","#0000CD","#000000","#000000","#000000","#000000","#000000","#000000","#0000CD","#0000CD","#0000CD","#FFFFFF","#FFFFFF","#FFFFFF","#FFFFFF","#FFFFFF","#FFFFFF","#FFFFFF","#0000CD","#0000CD","#0000CD","#0000CD","#000000","#FFC0CB","#FFC0CB","#FFC0CB","#000000","#000000","#000000","#0000CD","#0000CD","#FFFFFF","#0000CD","#0000CD","#FFFFFF","#0000CD","#0000CD","#FFFFFF","#0000CD","#0000CD","#0000CD","#0000CD","#FFC0CB","#000000","#FFC0CB","#000000","#FFC0CB","#000000","#000000","#0000CD","#0000CD","#FFFFFF","#0000CD","#0000CD","#FFFFFF","#0000CD","#0000CD","#FFFFFF","#0000CD","#0000CD","#0000CD","#0000CD","#B22222","#FFC0CB","#FFC0CB","#FFC0CB","#B22222","#000000","#000000","#0000CD","#0000CD","#FFFFFF","#FFFFFF","#FFFFFF","#FFFFFF","#FFFFFF","#FFFFFF","#FFFFFF","#0000CD","#0000CD","#0000CD","#0000CD","#000000","#FFC0CB","#000000","#FFC0CB","#000000","#000000","#000000","#0000CD","#0000CD","#FFFFFF","#0000CD","#0000CD","#FFFFFF","#0000CD","#0000CD","#FFFFFF","#0000CD","#0000CD","#0000CD","#0000CD","#000000","#FFC0CB","#FFC0CB","#FFC0CB","#000000","#000000","#000000","#0000CD","#0000CD","#FFFFFF","#0000CD","#0000CD","#FFFFFF","#0000CD","#0000CD","#FFFFFF","#0000CD","#0000CD","#0000CD","#0000CD","#000000","#000000","#FFC0CB","#000000","#000000","#000000","#000000","#000000","#0000CD","#FFFFFF","#FFFFFF","#FFFFFF","#FFFFFF","#FFFFFF","#FFFFFF","#FFFFFF","#0000CD","#0000CD"]
+        ];
 
-		function getColorName(colorCode) {
-			switch (colorCode) {
-				case '#FFFFFF':
-					return '白　色';
-				case '#008000':
-					return '綠　色';
-				case '#000000':
-					return '黑　色';
-				case '#0000CD':
-					return '深藍色';
-				case '#B22222':
-					return '紅　色';
-				case '#FFC0CB':
-					return '粉紅色';
-				case '#84C1FF':
-					return '淺藍色';
-				default:
-					return '未知顏色';
-			}
-		}
+        function getColorName(colorCode) {
+            switch (colorCode) {
+                case '#FFFFFF':
+                    return '白　色';
+                case '#008000':
+                    return '綠　色';
+                case '#000000':
+                    return '黑　色';
+                case '#0000CD':
+                    return '深藍色';
+                case '#B22222':
+                    return '紅　色';
+                case '#FFC0CB':
+                    return '粉紅色';
+                case '#84C1FF':
+                    return '淺藍色';
+                default:
+                    return '未知顏色';
+            }
+        }
 
-		function getRowName(rowNum) {
-			switch (rowNum) {
-				case 1:
-					return 'G';
-				case 2:
-					return 'F';
-				case 3:
-					return 'E';
-				case 4:
-					return 'D';
-				case 5:
-					return 'C';
-				case 6:
-					return 'B';
-				case 7:
-					return 'A';
-				default:
-					return 'Unknown';
-			}
-		}
+        function getRowName(rowNum) {
+            switch (rowNum) {
+                case 1:
+                    return 'G';
+                case 2:
+                    return 'F';
+                case 3:
+                    return 'E';
+                case 4:
+                    return 'D';
+                case 5:
+                    return 'C';
+                case 6:
+                    return 'B';
+                case 7:
+                    return 'A';
+                default:
+                    return 'Unknown';
+            }
+        }
 
-		const totalRow = 7;
-		const totalColumn = 20;
+        const totalRow = 7;
+        const totalColumn = 20;
 
         const numbersDiv = document.querySelector('.numbers');
         const grid = document.querySelector('.grid');
         const contentDiv = document.querySelector('.content');
 
-		let selectedIndex = -1; // Variable to store the index of the selected cell
+        let selectedIndex = -1; // Variable to store the index of the selected cell
 
-		function createGrid(index) {
-			grid.innerHTML = '';
+        function createGrid(index) {
+            grid.innerHTML = '';
 
-			for (let i = 0; i < totalRow * totalColumn; i++) {
-				const cell = document.createElement('div');
-				cell.classList.add('cell');
-				cell.style.backgroundColor = colorArrays[index - 1][i];
+            for (let i = 0; i < totalRow * totalColumn; i++) {
+                const cell = document.createElement('div');
+                cell.classList.add('cell');
+                cell.style.backgroundColor = colorArrays[index - 1][i];
 
-				if (i === selectedIndex) {
-					cell.classList.add('selected');
-				}
+                if (i === selectedIndex) {
+                    cell.classList.add('selected');
+                }
 
-				grid.appendChild(cell);
-			}
-		}
+                grid.appendChild(cell);
+            }
+        }
 
         // Create the initial grid
         createGrid(1);
 
         // Add event listener to grid
-		grid.addEventListener('click', function(event) {
-			if (event.target.classList.contains('cell')) {
-				// Remove the "selected" class from all cells
-				const cells = grid.querySelectorAll('.cell');
-				cells.forEach(cell => cell.classList.remove('selected'));
+        grid.addEventListener('click', function(event) {
+            if (event.target.classList.contains('cell')) {
+                // Remove the "selected" class from all cells
+                const cells = grid.querySelectorAll('.cell');
+                cells.forEach(cell => cell.classList.remove('selected'));
 
-				// Add the "selected" class to the clicked cell
-				event.target.classList.add('selected');
+                // Add the "selected" class to the clicked cell
+                event.target.classList.add('selected');
 
-				// Store the index of the selected cell
-				selectedIndex = Array.from(grid.children).indexOf(event.target);
+                // Store the index of the selected cell
+                selectedIndex = Array.from(grid.children).indexOf(event.target);
 
-				const row = Math.floor(selectedIndex / totalColumn) + 1;
-				const col = (selectedIndex % totalColumn) + 1;
-				const colorNames = colorArrays.map(colors => getColorName(colors[selectedIndex]));
+                const row = Math.floor(selectedIndex / totalColumn) + 1;
+                const col = (selectedIndex % totalColumn) + 1;
+                const colorNames = colorArrays.map(colors => getColorName(colors[selectedIndex]));
 
-				contentDiv.innerHTML = `<br/><span class="seat">${getRowName(row)} ${col}</span><br/><br/>` +
-					colorNames.map((name, i) => {
-						const colorBlock = document.createElement('div');
-						colorBlock.style.display = 'inline-block';
-						colorBlock.style.width = '20px';
-						colorBlock.style.height = '20px';
-						colorBlock.style.backgroundColor = colorArrays[i][selectedIndex];
-						colorBlock.style.border = '1px solid black';
-						colorBlock.style.marginRight = '5px';
+                contentDiv.innerHTML = `<br/><span class="seat">${getRowName(row)} ${col}</span><br/><br/>` +
+                    colorNames.map((name, i) => {
+                        const colorBlock = document.createElement('div');
+                        colorBlock.style.display = 'inline-block';
+                        colorBlock.style.width = '20px';
+                        colorBlock.style.height = '20px';
+                        colorBlock.style.backgroundColor = colorArrays[i][selectedIndex];
+                        colorBlock.style.border = '1px solid black';
+                        colorBlock.style.marginRight = '5px';
 
-						const numberSpan = document.createElement('span');
-						numberSpan.textContent = `${i + 1}. `;
-						numberSpan.style.marginRight = '5px';
+                        const numberSpan = document.createElement('span');
+                        numberSpan.textContent = `${i + 1}. `;
+                        numberSpan.style.marginRight = '5px';
 
-						return `${numberSpan.outerHTML}${colorBlock.outerHTML} ${name}`;
-					}).join('<br>');
+                        return `${numberSpan.outerHTML}${colorBlock.outerHTML} ${name}`;
+                    }).join('<br>');
 
-				contentDiv.style.display = 'block';
-			}
-		});
+                contentDiv.style.display = 'block';
+            }
+        });
 
-		// Add numbers above the grid
-		for (let i = 1; i <= colorArrays.length; i++) {
-			const button = document.createElement('button');
-			button.textContent = i;
-			button.addEventListener('click', function() {
-				// Remove "active" class from all buttons
-				const buttons = numbersDiv.querySelectorAll('button');
-				buttons.forEach(btn => btn.classList.remove('active'));
+        // Add numbers above the grid
+        for (let i = 1; i <= colorArrays.length; i++) {
+            const button = document.createElement('button');
+            button.textContent = i;
+            button.addEventListener('click', function() {
+                // Remove "active" class from all buttons
+                const buttons = numbersDiv.querySelectorAll('button');
+                buttons.forEach(btn => btn.classList.remove('active'));
 
-				// Add "active" class to the clicked button
-				this.classList.add('active');
+                // Add "active" class to the clicked button
+                this.classList.add('active');
 
-				createGrid(i);
-			});
-			numbersDiv.appendChild(button);
+                createGrid(i);
+            });
+            numbersDiv.appendChild(button);
 
-			// Highlight the first button by default
-			if (i === 1) {
-				button.classList.add('active');
-			}
-		}
+            // Highlight the first button by default
+            if (i === 1) {
+                button.classList.add('active');
+            }
+        }
     </script>
 </body>
 </html>
