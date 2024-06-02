@@ -100,7 +100,9 @@
     </div>
     <div class="content">
     </div>
-    <br/><button class="genButton" id="showAllContent">Show All Content</button>
+    <br/><button class="genButton" id="showAllContent">列印全員色板順序</button>
+    <br/><br/><button class="genButton" id="showSwitchTimes">翻版次數排行榜</button>
+    <div id="switchTimesContainer"></div>
 
     <script>
         const colorArrays = [
@@ -323,6 +325,51 @@
             newWindow.document.write('</body></html>');
             newWindow.document.close();
         });
+
+        function calculateSwitchTimes(numbers) {
+            let switchTimes = 1;
+            let currentColor = numbers[0];
+
+            for (let i = 1; i < numbers.length; i++) {
+                if (numbers[i] !== currentColor) {
+                    switchTimes++;
+                    currentColor = numbers[i];
+                }
+            }
+
+            return switchTimes;
+        }
+
+        const showSwitchTimesButton = document.getElementById('showSwitchTimes');
+        const switchTimesContainer = document.getElementById('switchTimesContainer');
+
+		showSwitchTimesButton.addEventListener('click', function() {
+			const switchTimesData = [];
+
+			for (let i = 0; i < totalRow * totalColumn; i++) {
+				const row = Math.floor(i / totalColumn) + 1;
+				const col = (i % totalColumn) + 1;
+				const colorCodes = colorArrays.map(colors => colors[i]);
+
+				const switchTimes = calculateSwitchTimes(colorCodes);
+
+				switchTimesData.push({
+					seat: `${getRowName(row)}${col.toString().padStart(2, '0')}`,
+					times: switchTimes
+				});
+			}
+
+			// Sort the switch times data in descending order
+			switchTimesData.sort((a, b) => b.times - a.times);
+
+			let switchTimesHTML = '';
+			switchTimesData.forEach((data, index) => {
+				const rank = index + 1;
+				switchTimesHTML += `<p>${rank.toString().padStart(2, '0')}. ${data.seat}: ${data.times} 次</p>`;
+			});
+
+			switchTimesContainer.innerHTML = switchTimesHTML;
+		});
     </script>
 </body>
 </html>
