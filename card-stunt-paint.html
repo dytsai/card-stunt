@@ -25,11 +25,11 @@
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(20, 1fr);
+      grid-template-columns: repeat(21, 1fr);
       grid-template-rows: repeat(7, 1fr);
       gap: 2px;
       width: 100vw;
-      height: calc(100vw * 7 / 20);
+      height: calc(100vw * 7 / 21);
       background-color: black;
       padding: 2px;
     }
@@ -71,7 +71,7 @@
     const inputFile = document.querySelector('.input-file');
     let selectedColor = '';
 
-    for (let i = 0; i < 7 * 20; i++) {
+    for (let i = 0; i < 7 * 21; i++) {
       const cell = document.createElement('div');
       cell.classList.add('cell');
       cell.addEventListener('click', () => {
